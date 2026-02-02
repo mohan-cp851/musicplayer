@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="player">
+    <h2>Now Playing</h2>
+    <img src="https://via.placeholder.com/200" alt="Album Art">
+
+    <h3>Song Title</h3>
+    <p>Artist Name</p>
+
+    <div class="progress-container">
+        <input type="range" id="progress" value="0">
+    </div>
+
+    <div class="controls">
+        <button>⏮</button>
+        <button id="play">▶</button>
+        <button>⏭</button>
+    </div>
+
+    <div class="volume">
+        <label>🔊</label>
+        <input type="range" id="volume" value="50">
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1d2671, #c33764);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.player {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.player img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.progress-container input {
+    width: 100%;
+}
+
+.controls button {
+    font-size: 20px;
+    margin: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background: #ddd;
+}
+
+.volume {
+    margin-top: 10px;
+}
+</style>
+<script>
+    let playing = false;
+const playBtn = document.getElementById("play");
+const progress = document.getElementById("progress");
+
+playBtn.onclick = function () {
+    if (!playing) {
+        playBtn.textContent = "⏸";
+        playing = true;
+    } else {
+        playBtn.textContent = "▶";
+        playing = false;
+    }
+};
+
+// Fake progress movement
+setInterval(() => {
+    if (playing && progress.value < 100) {
+        progress.value++;
+    }
+}, 500);
+
+</script>
